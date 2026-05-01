@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Layout from './components/Layout';
+import LoginPage from './pages/LoginPage';
+
+// Временные заглушки для остальных страниц
+const NewsPage = () => <div>Страница новостей (скоро)</div>;
+const TasksPage = () => <div>Страница задач (скоро)</div>;
+const ChatPage = () => <div>Страница чата (скоро)</div>;
+const DocumentsPage = () => <div>Страница документов (скоро)</div>;
+const NotificationsPage = () => <div>Страница уведомлений (скоро)</div>;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <AuthProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/" element={
+                        <ProtectedRoute>
+                            <Layout />
+                        </ProtectedRoute>
+                    }>
+                        <Route index element={<NewsPage />} />
+                        <Route path="news" element={<NewsPage />} />
+                        <Route path="tasks" element={<TasksPage />} />
+                        <Route path="chat" element={<ChatPage />} />
+                        <Route path="documents" element={<DocumentsPage />} />
+                        <Route path="notifications" element={<NotificationsPage />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
+    );
 }
 
 export default App;
