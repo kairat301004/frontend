@@ -6,10 +6,11 @@ import Layout from './components/Layout';
 import LoginPage from './pages/LoginPage';
 import NewsPage from './pages/NewsPage';
 import TasksPage from './pages/TasksPage';
+import ChatPage from './pages/ChatPage';
 
 // Временные заглушки для остальных страниц
 // const TasksPage = () => <div>Страница задач (скоро)</div>;
-const ChatPage = () => <div>Страница чата (скоро)</div>;
+// const ChatPage = () => <div>Страница чата (скоро)</div>;
 const DocumentsPage = () => <div>Страница документов (скоро)</div>;
 const NotificationsPage = () => <div>Страница уведомлений (скоро)</div>;
 
