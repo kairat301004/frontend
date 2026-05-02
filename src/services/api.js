@@ -5,9 +5,9 @@ const API_BASE_URL = 'http://localhost:8080';
 export const api = axios.create({
     baseURL: API_BASE_URL,
     withCredentials: true,  // важно для сессий!
-    headers: {
-        'Content-Type': 'application/json',
-    },
+    // headers: {
+    //     'Content-Type': 'application/json'
+    // }
 });
 
 // Интерсептор для обработки ошибок авторизации

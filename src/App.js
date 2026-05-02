@@ -4,9 +4,9 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
 import LoginPage from './pages/LoginPage';
+import NewsPage from './pages/NewsPage';
 
 // Временные заглушки для остальных страниц
-const NewsPage = () => <div>Страница новостей (скоро)</div>;
 const TasksPage = () => <div>Страница задач (скоро)</div>;
 const ChatPage = () => <div>Страница чата (скоро)</div>;
 const DocumentsPage = () => <div>Страница документов (скоро)</div>;
