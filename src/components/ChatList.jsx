@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import { chatService } from '../services/chatService';
 import { api } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 const ChatList = ({ onSelectChat, selectedChatId }) => {
     const [chats, setChats] = useState([]);
@@ -20,6 +21,7 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [groupName, setGroupName] = useState('');
     const [creating, setCreating] = useState(false);
+    const { user } = useAuth(); // добавить
 
     useEffect(() => {
         loadChats();
@@ -89,7 +91,7 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
     const getChatName = (chat) => {
         if (chat.type === 'GROUP') return chat.name;
         // Для приватного чата — имя собеседника
-        const otherUser = chat.participants?.find(p => p.id !== JSON.parse(localStorage.getItem('tandem_user'))?.id);
+        const otherUser = chat.participants?.find(p => p.id !== user?.id);
         return otherUser?.fullName || 'Приватный чат';
     };
 

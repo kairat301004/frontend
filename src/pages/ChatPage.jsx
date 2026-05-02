@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import ChatList from '../components/ChatList';
+import ChatWindow from '../components/ChatWindow';
 
 const ChatPage = () => {
     const [selectedChatId, setSelectedChatId] = useState(null);
@@ -8,26 +9,24 @@ const ChatPage = () => {
     return (
         <Grid container sx={{ height: 'calc(100vh - 100px)' }}>
             {/* Список чатов — 30% ширины */}
-            <Grid item xs={12} md={4} sx={{ borderRight: 1, borderColor: 'divider' }}>
+            <Grid item xs={12} md={4} sx={{ borderRight: 1, borderColor: 'divider', overflow: 'auto' }}>
                 <ChatList onSelectChat={setSelectedChatId} selectedChatId={selectedChatId} />
             </Grid>
             
             {/* Окно чата — 70% ширины */}
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} md={8} sx={{ height: '100%' }}>
                 {selectedChatId ? (
-                    <Box sx={{ p: 2, height: '100%' }}>
-                        {/* Здесь будет ChatWindow (сделаем в следующей части) */}
-                        <Paper sx={{ p: 3, height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Typography variant="body1" color="textSecondary">
-                                Выберите чат или создайте новый
-                            </Typography>
-                        </Paper>
-                    </Box>
+                    <ChatWindow chatId={selectedChatId} />
                 ) : (
-                    <Box sx={{ p: 2, height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Typography variant="h6" color="textSecondary">
-                            Выберите чат слева
-                        </Typography>
+                    <Box sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Box sx={{ textAlign: 'center' }}>
+                            <Typography variant="h6" color="textSecondary" gutterBottom>
+                                Выберите чат
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary">
+                                Или создайте новый, нажав на кнопку выше
+                            </Typography>
+                        </Box>
                     </Box>
                 )}
             </Grid>
