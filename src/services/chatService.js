@@ -47,4 +47,9 @@ export const chatService = {
     leaveChat: async (chatId) => {
         await api.delete(`/api/chats/${chatId}/leave`);
     },
+
+    // Отметить сообщения как прочитанные
+    markAsRead: async (chatId) => {
+        await api.post(`/api/chats/${chatId}/read`);
+    },
 };
