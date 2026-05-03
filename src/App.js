@@ -9,6 +9,7 @@ import TasksPage from './pages/TasksPage';
 import ChatPage from './pages/ChatPage';
 import DocumentsPage from './pages/DocumentsPage';
 import NotificationsPage from './pages/NotificationsPage';
+import ProfilePage from './pages/ProfilePage';
 
 // Временные заглушки для остальных страниц
 // const TasksPage = () => <div>Страница задач (скоро)</div>;
@@ -33,6 +34,7 @@ function App() {
                         <Route path="chat" element={<ChatPage />} />
                         <Route path="documents" element={<DocumentsPage />} />
                         <Route path="notifications" element={<NotificationsPage />} />
+                        <Route path="profile" element={<ProfilePage />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
