@@ -10,6 +10,7 @@ import ChatPage from './pages/ChatPage';
 import DocumentsPage from './pages/DocumentsPage';
 import NotificationsPage from './pages/NotificationsPage';
 import ProfilePage from './pages/ProfilePage';
+import AdminPage from './pages/AdminPage';
 
 // Временные заглушки для остальных страниц
 // const TasksPage = () => <div>Страница задач (скоро)</div>;
@@ -35,6 +36,7 @@ function App() {
                         <Route path="documents" element={<DocumentsPage />} />
                         <Route path="notifications" element={<NotificationsPage />} />
                         <Route path="profile" element={<ProfilePage />} />
+                        <Route path="admin" element={<AdminPage />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
@@ -43,3 +45,64 @@ function App() {
 }
 
 export default App;
+
+// import React from 'react';
+// import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+// import { AuthProvider, useAuth } from './context/AuthContext';
+// import ProtectedRoute from './components/ProtectedRoute';
+// import Layout from './components/Layout';
+// import LoginPage from './pages/LoginPage';
+// import NewsPage from './pages/NewsPage';
+// import TasksPage from './pages/TasksPage';
+// import ChatPage from './pages/ChatPage';
+// import DocumentsPage from './pages/DocumentsPage';
+// import NotificationsPage from './pages/NotificationsPage';
+// import ProfilePage from './pages/ProfilePage';
+// import AdminPage from './pages/AdminPage';
+
+// function AppRoutes() {
+//     const { user } = useAuth();
+
+//     return (
+//         <Routes>
+//             <Route path="/login" element={<LoginPage />} />
+//             <Route path="/" element={
+//                 <ProtectedRoute>
+//                     <Layout />
+//                 </ProtectedRoute>
+//             }>
+//                 <Route index element={<NewsPage />} />
+//                 <Route path="news" element={<NewsPage />} />
+//                 <Route path="tasks" element={<TasksPage />} />
+//                 <Route path="chat" element={<ChatPage />} />
+//                 <Route path="documents" element={<DocumentsPage />} />
+//                 <Route path="notifications" element={<NotificationsPage />} />
+//                 <Route path="profile" element={<ProfilePage />} />
+//                 {/* <Route 
+//                     path="admin" 
+//                     element={
+//                         user?.email === 'admin@tandem.com' ? <AdminPage /> : <Navigate to="/" />
+//                     } 
+//                 /> */}
+//                 <Route 
+//                     path="admin" 
+//                     element={
+//                         <AdminPage />  // временно убрали проверку
+//                     } 
+//                 />
+//             </Route>
+//         </Routes>
+//     );
+// }
+
+// function App() {
+//     return (
+//         <AuthProvider>
+//             <BrowserRouter>
+//                 <AppRoutes />
+//             </BrowserRouter>
+//         </AuthProvider>
+//     );
+// }
+
+// export default App;
