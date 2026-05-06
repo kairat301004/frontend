@@ -65,11 +65,17 @@ const Layout = () => {
                     <Button color="inherit" onClick={() => navigate('/tasks')}>Задачи</Button>
                     <Button color="inherit" onClick={() => navigate('/chat')}>Чат</Button>
                     <Button color="inherit" onClick={() => navigate('/documents')}>Документы</Button>
-                    <Button color="inherit" onClick={() => navigate('/profile')}>Профиль</Button>
-                    <NotificationBell />  {/* ← добавить */}
-                    <Typography sx={{ ml: 2, mr: 2 }}>
+                    <Button color="inherit" onClick={() => navigate('/profile')}><Typography sx={{ ml: 2, mr: 2 }}>
                         {user?.firstName} {user?.lastName}
                     </Typography>
+                    </Button>
+                    {user?.email === 'admin@tandem.com' && (
+                        <Button color="inherit" onClick={() => navigate('/admin')}>
+                            Админ
+                        </Button>
+                    )}
+                    <NotificationBell />  {/* ← добавить */}
+                    
                     <Button color="inherit" onClick={handleLogout}>Выйти</Button>
                 </Toolbar>
             </AppBar>
